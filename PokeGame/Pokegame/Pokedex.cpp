@@ -8,7 +8,7 @@
 using namespace std;
 
 
-// Mon Pokedex, un tableau dynamique
+// Mon Pokedex, un monPokedex->mesPokemonsleau dynamique
 Pokedex* initPokedex(const int size)
 {
 	Pokedex *p = new Pokedex;
@@ -28,21 +28,21 @@ void insertPokemon(Pokedex* monPokedex, Pokemon p)
 		(*monPokedex).capacity = int((*monPokedex).capacity*1.5);
 		(*monPokedex).mesPokemons = tmp;
 	}
+	// Ajout du Pokemon
 	/*
-	(*monPokedex).mesPokemons[(*monPokedex).nbPokemons] = p;
+	int j = (*monPokedex).nbPokemons;
+	(*monPokedex).mesPokemons[j] = p;
 	(*monPokedex).nbPokemons++;
 	*/
-	// Tri par insertion à coder
-	int j = (*monPokedex).nbPokemons;
-	/*
-	(*monPokedex).mesPokemons[j] = p;
-	while ((j > 0) & (strcmp((*monPokedex).mesPokemons[j - 1].nom, (*monPokedex).mesPokemons[j].nom) < 0))
-	{
-		(*monPokedex).mesPokemons[j] = (*monPokedex).mesPokemons[j-1];
-		j--;
-	}
-	*/
-	(*monPokedex).mesPokemons[j] = p;
+	// Tri par insertion
+	// Insertion
+	Pokemon element_a_inserer = p;
+	int taille_gauche = (monPokedex->nbPokemons);
+	const char* str = (const char*)element_a_inserer.nom;
+	int j;
+	for (j = taille_gauche; j > 0 && strcmp(monPokedex->mesPokemons[j - 1].nom, str) > 0; j--)
+		monPokedex->mesPokemons[j] = monPokedex->mesPokemons[j - 1];
+	monPokedex->mesPokemons[j] = element_a_inserer;
 	(*monPokedex).nbPokemons++;
 }
 

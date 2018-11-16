@@ -1,4 +1,5 @@
 
+
 #include"pokemonTypes.h"
 
 
@@ -19,7 +20,7 @@ typedef struct
 
 
 // Evolution Pokemon
-void evolve(Pokemon& p, EspecePokemon bestiaire[]/*, Ressources Resources*/);
+void evolve(Pokemon& p/*, EspecePokemon bestiaire[], Ressources Resources*/);
 // void evolve(Ressources Resources, EspecePokemon bestiaire[], Pokemon& p);
 
 // PowerUp Pokemon

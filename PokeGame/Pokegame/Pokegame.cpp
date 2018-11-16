@@ -66,7 +66,7 @@ int choixMenu()
 
 
 // Avancement :
-// Evolution puis séance 5 ok ?
+// Séance 5
 
 int main()
 {
@@ -76,8 +76,8 @@ int main()
 	const int SIZE = 3;
 	Pokedex* monPokedex = initPokedex(SIZE);
 	Ressources Resources;
-	Resources.stardust = 0;
-	Resources.candies = 0;
+	Resources.stardust = 900;
+	Resources.candies = 100;
 	int num;
 	do
 	{
@@ -89,6 +89,7 @@ int main()
 		case 1:
 		{
 			cout << "1 - Index des pokemons" << endl;
+			cout << "Voulez-vous bien trier le bestiaire ? (0/1)" << endl;
 			int tri;
 			cin >> tri;
 			if (tri != 0)
@@ -154,7 +155,7 @@ int main()
 				p = &(monPokedex->mesPokemons[idp]);
 				if (newchoice == 0)
 				{
-					if ((Resources.candies >= 00) && (Resources.stardust >= 000))
+					if ((Resources.candies >= 10) && (Resources.stardust >= 500))
 					{
 						powerup(*p);
 						cout << "C'est fait !" << endl;
@@ -166,7 +167,21 @@ int main()
 				}
 				if (newchoice == 1)
 				{
-					evolve(*p, bestiaire/*, Resources*/);
+					int k;
+					for (k = 0; k < 150; k++)
+					{
+						if (bestiaire[k].nom == (*p).nom)
+							break;
+					}
+					int necessaryCandies = bestiaire[k].nbBonbonsPourEvoluer;
+					if ((necessaryCandies <= Resources.candies) & (bestiaire[k].evolvesTo != nullptr))
+					{
+						(*p).nom = (char*)bestiaire[k].evolvesTo;
+						Resources.candies -= necessaryCandies;
+						evolve(*p/*, bestiaire, Resources*/);
+						cout << "C'est fait !" << endl;
+						display(*p, bestiaire, typesLabel);
+					}
 				}
 			}
 			break;

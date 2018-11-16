@@ -1,32 +1,17 @@
 
 #include "pch.h"
 #include "pokemon.h"
-#include "Pokedex.h"
 #include "bestiaire.h"
+#include "Pokedex.h"
 #include <iostream>
 
 using namespace std;
 
 
 // Evolution Pokemon
-void evolve(Pokemon& p, EspecePokemon bestiaire[]/*, Ressources Resources*/)
+void evolve(Pokemon& p/*, EspecePokemon bestiaire[], Ressources Resources*/)
 {
-	int k;
-	for (k = 0; k < 150; k++)
-	{
-		if (bestiaire[k].nom == p.nom)
-			break;
-	}
-	/*
-	int necessaryCandies = bestiaire[k].nbBonbonsPourEvoluer;
-	if ((necessaryCandies <= Resources.candies) & (bestiaire[k].evolvesTo != nullptr))
-	{
-		p.nom = (char*)bestiaire[k].evolvesTo;
-		p.evolution = p.evolution + 1;
-		Resources.candies -= necessaryCandies;
-	}
-	*/
-	p.evolution = p.evolution + 1;
+	p.evolution ++;
 }
 
 

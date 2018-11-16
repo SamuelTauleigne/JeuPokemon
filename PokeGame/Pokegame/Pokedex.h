@@ -1,5 +1,4 @@
-
-#include"pokemon.h"
+#include "pokemon.h"
 
 // Creation de la structure Pokedex
 #ifndef __RESSOURCES__

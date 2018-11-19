@@ -787,7 +787,7 @@ void initBestiaire(EspecePokemon bestiaire[])
 
 
 
-	bestiaire[82].nom = (char*)"Farfetch'd";
+	bestiaire[82].nom = (char*)"Farfetched";
 
 	bestiaire[82].type = Normal;
 
@@ -1177,7 +1177,7 @@ void initBestiaire(EspecePokemon bestiaire[])
 
 
 
-	bestiaire[121].nom = (char*)"Mr.Mime";
+	bestiaire[121].nom = (char*)"MrMime";
 
 	bestiaire[121].type = Psychic;
 
@@ -1293,7 +1293,7 @@ void initBestiaire(EspecePokemon bestiaire[])
 
 	bestiaire[132].nbBonbonsPourEvoluer = 25;
 
-	bestiaire[132].evolvesTo = (char*)"Vaporeon, Jolteon or Flareon (random chance)";
+	bestiaire[132].evolvesTo = (char*)"Vaporeon, Jolteon or Flareon (random chance)"; /////////////////////////////////////////////
 
 
 
@@ -1410,7 +1410,7 @@ void initBestiaire(EspecePokemon bestiaire[])
 	// rajout des infos d’évolution
 	for (int i = 0; i < 150; i ++)
 	{ 
-		bestiaire[i].estEvolue = false;
+		bestiaire[i].estEvolue = true;
 	}
 	// set all evolved pokemon to true
 	bestiaire[0].estEvolue = 0; 

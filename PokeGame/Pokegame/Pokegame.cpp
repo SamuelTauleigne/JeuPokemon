@@ -20,6 +20,7 @@ Tester tri par insertion du Pokedex
 #include "bestiaire.h"
 #include "utils.h"
 #include "Pokedex.h"
+#include "historique.h"
 #include <iostream>
 
 using namespace std;
@@ -32,7 +33,8 @@ int afficheMenu()
 	cout << "3 - Attraper un pokemon" << endl;
 	cout << "4 - Power-up et evolution" << endl;
 	cout << "5 - Combat" << endl;
-	cout << "6 - Quitter" << endl;
+	cout << "6 - Historique" << endl;
+	cout << "7 - Quitter" << endl;
 	return 0;
 }
 
@@ -55,7 +57,9 @@ int choixMenu()
 		break;
 	case 5: cout << "5 - Combat" << endl;
 		break;
-	case 6: cout << "6 - Quitter" << endl;
+	case 6: cout << "6 - Historique" << endl;
+		break;
+	case 7: cout << "6 - Quitter" << endl;
 		break;
 	default: cout << "Entree non valide." << endl;
 		choixMenu();
@@ -66,7 +70,7 @@ int choixMenu()
 
 
 // Avancement :
-// Séance 5
+// Séance 6
 
 int main()
 {
@@ -78,11 +82,16 @@ int main()
 	Ressources Resources;
 	Resources.stardust = 900;
 	Resources.candies = 100;
+	historique* hist = new historique;
+	hist->nombre = 0;
+	hist->debut = nullptr;
 	int num;
 	do
 	{
 		afficheMenu();
+		cout << "************************************************************" << endl;
 		cout << "Choisissez une entree du menu en entrant son numero" << endl;
+		cout << "************************************************************" << endl;
 		cin >> num;
 		switch (num)
 		{
@@ -131,6 +140,7 @@ int main()
 						cout << "Le Pokemon s'est enfui" << endl;
 					}
 				}
+				cout << "************************************************************" << endl;
 			}
 			while (i == 1);
 			break;
@@ -176,6 +186,7 @@ int main()
 					int necessaryCandies = bestiaire[k].nbBonbonsPourEvoluer;
 					if ((necessaryCandies <= Resources.candies) & (bestiaire[k].evolvesTo != nullptr))
 					{
+						insertEvolution(hist, p->nom, (char*)bestiaire[k].evolvesTo);
 						(*p).nom = (char*)bestiaire[k].evolvesTo;
 						Resources.candies -= necessaryCandies;
 						evolve(*p/*, bestiaire, Resources*/);
@@ -183,6 +194,7 @@ int main()
 						display(*p, bestiaire, typesLabel);
 					}
 				}
+				cout << "************************************************************" << endl;
 			}
 			break;
 		}
@@ -193,7 +205,18 @@ int main()
 		}
 		case 6:
 		{
-			cout << "6 - Quitter" << endl;
+			cout << "6 - Historique" << endl;
+			evolution* e = hist->debut;
+			for (int k = hist->nombre; k > 0; k--)
+			{
+				cout << e->from << " " << e->to << endl;
+				e = e->evol;
+			}
+			break;
+		}
+		case 7:
+		{
+			cout << "7 - Quitter" << endl;
 			break;
 		}
 		default:

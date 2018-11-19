@@ -54,6 +54,7 @@ void displayPokedex(Pokedex* pokedex, EspecePokemon bestiaire[150], char* typesL
 	cout << pokedex->nbPokemons << " pokemons capturés)" << endl;
 	for (int i = 0; i < (pokedex->nbPokemons); i++)
 	{
+		cout << "************************************************************" << endl;
 		display((pokedex->mesPokemons)[i], bestiaire, typesLabel);
 	}
 	cout << "Ressources disponibles : " << endl;
@@ -62,15 +63,16 @@ void displayPokedex(Pokedex* pokedex, EspecePokemon bestiaire[150], char* typesL
 }
 
 
-// Génération de Pokemon
+// Génération de Pokemon : Attention, il semble y avoir des caractères illisibles dans le bestiaire ...
 Pokemon genererPokemon(EspecePokemon bestiaire[150], char* typesLabel[18])
 {
 	int n;
 	EspecePokemon ennemi;
 	do
 	{
-		n = random_at_most(150);
+		n = random_at_most(149);
 		ennemi = bestiaire[n];
+		cout << n << endl;
 	} while (ennemi.estEvolue == 1);
 	Pokemon aleatoire;
 	aleatoire.nom = (char*)ennemi.nom;

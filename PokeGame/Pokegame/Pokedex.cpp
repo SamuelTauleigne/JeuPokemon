@@ -50,16 +50,19 @@ void insertPokemon(Pokedex* monPokedex, Pokemon p)
 // Affichage Pokedex
 void displayPokedex(Pokedex* pokedex, EspecePokemon bestiaire[150], char* typesLabel[18], Ressources Resources)
 {
+	cout << endl << "##### Affichage du Pokedex #####" << endl;
 	cout << endl << "Contenu du pokedex (Actuellement ";
-	cout << pokedex->nbPokemons << " pokemons capturés)" << endl;
+	cout << pokedex->nbPokemons << " pokemons captures)" << endl;
 	for (int i = 0; i < (pokedex->nbPokemons); i++)
 	{
 		cout << "************************************************************" << endl;
 		display((pokedex->mesPokemons)[i], bestiaire, typesLabel);
 	}
-	cout << "Ressources disponibles : " << endl;
+	cout << endl;
+	cout << "##### Ressources disponibles : #####" << endl;
 	cout << Resources.candies << " bonbons" << endl;
 	cout << Resources.stardust << " poussieres" << endl;
+	cout << endl;
 }
 
 
@@ -72,7 +75,6 @@ Pokemon genererPokemon(EspecePokemon bestiaire[150], char* typesLabel[18])
 	{
 		n = random_at_most(149);
 		ennemi = bestiaire[n];
-		cout << n << endl;
 	} while (ennemi.estEvolue == 1);
 	Pokemon aleatoire;
 	aleatoire.nom = (char*)ennemi.nom;

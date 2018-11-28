@@ -1485,10 +1485,12 @@ void initBestiaire(EspecePokemon bestiaire[])
 // Affichage Bestiaire
 void displayBestiaire(EspecePokemon bestiaire[])
 {
+	cout << "##### Affichage du bestiaire #####" << endl << endl;
 	for (int k = 0; k < 150; k++)
 	{
 		cout << bestiaire[k].nom << endl;
 	}
+	cout << endl;
 }
 
 
